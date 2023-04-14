@@ -62,14 +62,14 @@ class WeatherData {
 void main() async {
   // створюється фабрика factory типу WeatherFactory з типом 'openweathermap'
 
-  WeatherFactory factory = WeatherFactory('openweathermap');
+  // WeatherFactory factory = WeatherFactory('openweathermap');
 
   // створюється фабрика factory типу WeatherFactory з типом 'weatherbit'
 
-  // WeatherFactory factory = WeatherFactory('weatherbit');
+  WeatherFactory factory = WeatherFactory('weatherbit');
 
   // викликаємо getWeather через створену фабрику
-  WeatherData weatherData = await factory.getWeather('Dnipro');
+  WeatherData weatherData = await factory.getWeather('Odessa');
 
   // результат
   print('City: ${weatherData.city}');
