@@ -1,0 +1,28 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" {
+  +Future<WeatherData> getWeather()
+}
+
+class "abstract_factory_wea::abstract_factory_wea.dart::OpenWeatherMapFactory" {
+  +Future<WeatherData> getWeather()
+}
+
+"abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" <|-- "abstract_factory_wea::abstract_factory_wea.dart::OpenWeatherMapFactory"
+
+class "abstract_factory_wea::abstract_factory_wea.dart::WeatherBitFactory" {
+  +Future<WeatherData> getWeather()
+}
+
+"abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" <|-- "abstract_factory_wea::abstract_factory_wea.dart::WeatherBitFactory"
+
+class "abstract_factory_wea::abstract_factory_wea.dart::WeatherData" {
+  +String? city
+  +double? temperature
+  +double? windSpeed
+  +String? description
+}
+
+
+@enduml
