@@ -1,28 +1,44 @@
 @startuml
 set namespaceSeparator ::
 
-abstract class "abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" {
-  +Future<WeatherData> getWeather()
+abstract class "abstract_factory_wea::abstract_factory.dart::Button" {
+  +String getText()
 }
 
-class "abstract_factory_wea::abstract_factory_wea.dart::OpenWeatherMapFactory" {
-  +Future<WeatherData> getWeather()
+abstract class "abstract_factory_wea::abstract_factory.dart::Label" {
+  +String getText()
 }
 
-"abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" <|-- "abstract_factory_wea::abstract_factory_wea.dart::OpenWeatherMapFactory"
-
-class "abstract_factory_wea::abstract_factory_wea.dart::WeatherBitFactory" {
-  +Future<WeatherData> getWeather()
+class "abstract_factory_wea::abstract_factory.dart::UkrainianButton" {
+  +String getText()
 }
 
-"abstract_factory_wea::abstract_factory_wea.dart::WeatherFactory" <|-- "abstract_factory_wea::abstract_factory_wea.dart::WeatherBitFactory"
+"abstract_factory_wea::abstract_factory.dart::Button" <|-- "abstract_factory_wea::abstract_factory.dart::UkrainianButton"
 
-class "abstract_factory_wea::abstract_factory_wea.dart::WeatherData" {
-  +String? city
-  +double? temperature
-  +double? windSpeed
-  +String? description
+class "abstract_factory_wea::abstract_factory.dart::UkrainianLabel" {
+  +String getText()
 }
+
+"abstract_factory_wea::abstract_factory.dart::Label" <|-- "abstract_factory_wea::abstract_factory.dart::UkrainianLabel"
+
+abstract class "abstract_factory_wea::abstract_factory.dart::WeatherWidgetFactory" {
+  +Button createButton()
+  +Label createLabel()
+}
+
+class "abstract_factory_wea::abstract_factory.dart::UkrainianWeatherWidgetFactory" {
+  +Button createButton()
+  +Label createLabel()
+}
+
+"abstract_factory_wea::abstract_factory.dart::WeatherWidgetFactory" <|-- "abstract_factory_wea::abstract_factory.dart::UkrainianWeatherWidgetFactory"
+
+class "abstract_factory_wea::abstract_factory.dart::WeatherApp" {
+  -WeatherWidgetFactory _factory
+  +void displayWeather()
+}
+
+"abstract_factory_wea::abstract_factory.dart::WeatherApp" o-- "abstract_factory_wea::abstract_factory.dart::WeatherWidgetFactory"
 
 
 @enduml
